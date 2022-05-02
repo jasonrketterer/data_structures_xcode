@@ -20,6 +20,14 @@ Vector<T>::Vector(size_t sz, const T &t) : size_(sz), capacity_(sz), content_(0)
     }
 }
 
+// destructor
+template <typename T>
+Vector<T>::~Vector() {
+    delete [] content_;
+    content_ = nullptr;
+    size_ = capacity_ = 0;
+}
+
 // copy constructor
 template <typename T>
 Vector<T>::Vector(const Vector<T> & source) : size_(source.size_), capacity_(source.capacity_) {
@@ -87,13 +95,6 @@ const T & Vector<T>::operator [](size_t index) const {
     return content_[index];
 }
 
-template <typename T>
-Vector<T>::~Vector() {
-    delete [] content_;
-    content_ = nullptr;
-    size_ = capacity_ = 0;
-}
-
 // safe memory allocation for our vector
 template <typename T>
 T* Vector<T>::NewArray(size_t capacity) {
@@ -132,7 +133,7 @@ bool Vector<T>::SetCapacity(size_t newCapacity) {
         T *newContent = NewArray(newCapacity);
         if (newContent == 0)
             return false;
-        if (size_ > newCapacity)
+        if (size_ > newCapacity) // truncate size, if necessary
             size_ = newCapacity;
         for (size_t i = 0; i < size_; ++i)
             newContent[i] = content_[i];
@@ -154,8 +155,69 @@ size_t Vector<T>::Capacity() const {
 }
 
 template <typename T>
+bool Vector<T>::Empty() const {
+    return size_ == 0;
+}
+
+template <typename T>
+bool Vector<T>::PushBack(const T& t) {
+    if(size_ + 1 > capacity_) {
+        if(!SetCapacity(2 * capacity_))
+            return false;
+    }
+    content_[size_] = t;
+    ++size_;
+    return true;
+}
+
+template <typename T>
+bool Vector<T>::PopBack() {
+    if(Empty())
+        return false;
+    --size_;
+    return true;
+}
+
+template <typename T>
 void Vector<T>::Clear() {
     SetSize(0);
+}
+
+template <typename T>
+T & Vector<T>::Front() {
+    if(Empty()) {
+        std::cerr << "** Error: Front() called on empty vector\n";
+        exit(EXIT_FAILURE);
+    }
+    return content_[0];
+}
+
+template <typename T>
+const T & Vector<T>::Front() const {
+    if(Empty()) {
+        std::cerr << "** Error: Front() called on empty vector\n";
+        exit(EXIT_FAILURE);
+    }
+    return content_[0];
+}
+
+
+template <typename T>
+T & Vector<T>::Back() {
+    if(Empty()) {
+        std::cerr << "** Error: Back() called on empty vector\n";
+        exit(EXIT_FAILURE);
+    }
+    return content_[size_ - 1];
+}
+
+template <typename T>
+const T & Vector<T>::Back() const {
+    if(Empty()) {
+        std::cerr << "** Error: Back() called on empty vector\n";
+        exit(EXIT_FAILURE);
+    }
+    return content_[size_ - 1];
 }
 
 template <typename T>

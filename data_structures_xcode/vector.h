@@ -25,7 +25,15 @@ public:
     size_t Size() const;
     size_t Capacity() const;
 
+    // container class methods
+    bool Empty() const;
+    bool PushBack(const T& t);
+    bool PopBack();
     void Clear();                                   // set size to 0
+    T & Front();                                    // return element at index 0
+    const T & Front() const;
+    T & Back();                                     // return element at index size-1
+    const T & Back() const;
 
     // Display methods
     void Display(std::ostream & os = std::cout, char ofc = '\0') const;
@@ -40,7 +48,6 @@ protected:
 
     // safe memory allocator
     static T *NewArray(size_t sz);  // safe memory allocator
-
 };
 
 // non-member operator overloads
@@ -54,3 +61,5 @@ template < typename T >
 bool operator != (const Vector<T>&, const Vector<T>&);
 
 #endif //VECTOR_H
+
+
