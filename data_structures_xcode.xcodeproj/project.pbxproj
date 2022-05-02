@@ -27,7 +27,7 @@
 		DF664A3B281D9FCD005B7CE4 /* data_structures_xcode */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = data_structures_xcode; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF664A3E281D9FCD005B7CE4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DF664A48281DB80F005B7CE4 /* vector.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = vector.cpp; sourceTree = "<group>"; };
-		DF664A49281DB80F005B7CE4 /* vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = vector.hpp; sourceTree = "<group>"; };
+		DF664A49281DB80F005B7CE4 /* vector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = vector.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			children = (
 				DF664A3E281D9FCD005B7CE4 /* main.cpp */,
 				DF664A48281DB80F005B7CE4 /* vector.cpp */,
-				DF664A49281DB80F005B7CE4 /* vector.hpp */,
+				DF664A49281DB80F005B7CE4 /* vector.h */,
 			);
 			path = data_structures_xcode;
 			sourceTree = "<group>";
