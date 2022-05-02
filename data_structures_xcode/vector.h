@@ -1,6 +1,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+#include <cstdlib>
+#include <iostream>
+
 template<typename T>
 class Vector {
 public:
@@ -49,7 +52,5 @@ bool operator == (const Vector<T>&, const Vector<T>&);
 
 template < typename T >
 bool operator != (const Vector<T>&, const Vector<T>&);
-
-#include "vector.cpp"
 
 #endif //VECTOR_H
